@@ -55,7 +55,19 @@ class _FitnessMainPageState extends State<FitnessMainPage> {
               ),
               child: Container(
                 height: 280,
-                child: Placeholder(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Featured Workouts'),
+                    Expanded(
+                      child: ListView(
+                        children: [
+
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(

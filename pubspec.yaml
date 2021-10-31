@@ -41,6 +41,7 @@ dependencies:
   badges:
   freezed_annotation:
   percent_indicator:
+  fl_chart:
 
 dev_dependencies:
   flutter_test:
