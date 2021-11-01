@@ -1,6 +1,7 @@
 import 'package:coolicons/coolicons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fitness_mobile/src/data/feature_workouts.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class FitnessMainPage extends StatefulWidget {
   const FitnessMainPage({Key? key}) : super(key: key);
@@ -155,18 +156,85 @@ class _FitnessMainPageState extends State<FitnessMainPage> {
               ),
             ),
             SizedBox(
-              height: 84,
-              child: Row(
-                children: [
-
-                ],
+              height: 60,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          'Workout Progress',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 4,
+                        ),
+                        Text(
+                          '12 class ongoing',
+                          style: TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        right: 12,
+                      ),
+                      child: CircularPercentIndicator(
+                        radius: 44,
+                        progressColor: Colors.black,
+                        percent: 0.75,
+                        center: const Text(
+                          '75%',
+                          style: TextStyle(
+                            fontSize: 11,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Expanded(
-              child: Placeholder(),
+              child: Stack(
+                children: [
+                  Positioned(
+                    left: 0,
+                    top: 0,
+                    bottom: 0,
+                    right: 120,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.lightGreenAccent,
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(32),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 64,
+                    bottom: 0,
+                    right: 0,
+                    child: Container(
+                      width: 120,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
