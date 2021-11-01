@@ -37,7 +37,7 @@ dependencies:
   coolicons:
   flutter_riverpod:
   line_icons:
-  google_fonts:
+  # google_fonts:
   badges:
   freezed_annotation:
   percent_indicator:

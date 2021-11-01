@@ -1,5 +1,6 @@
 import 'package:coolicons/coolicons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_fitness_mobile/src/data/feature_workouts.dart';
 
 class FitnessMainPage extends StatefulWidget {
   const FitnessMainPage({Key? key}) : super(key: key);
@@ -32,13 +33,19 @@ class _FitnessMainPageState extends State<FitnessMainPage> {
                       SizedBox(
                         height: 4,
                       ),
-                      Text('You\'ve free trial class'),
+                      Text(
+                        'You\'ve free trial class',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                   Spacer(),
                   IconButton(
                     onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text(
                           'Clicked Menu Button',
                         ),
@@ -51,28 +58,109 @@ class _FitnessMainPageState extends State<FitnessMainPage> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
-                vertical: 24,
+                vertical: 16,
               ),
-              child: Container(
+              child: SizedBox(
                 height: 280,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Featured Workouts'),
-                    Expanded(
-                      child: ListView(
-                        children: [
-
-                        ],
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 8, 0, 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Featured Workouts',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: featureWorkoutItems.length,
+                          itemBuilder: (context, index) {
+                            var item = featureWorkoutItems[index];
+                            return Padding(
+                              padding: const EdgeInsets.only(
+                                right: 16,
+                              ),
+                              child: SizedBox(
+                                width: 150,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      height: 180,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image:
+                                              NetworkImage(item.thumbImg ?? ''),
+                                          fit: BoxFit.cover,
+                                        ),
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 8,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              item.title ?? '-',
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Spacer(),
+                                            Text(
+                                              item.time ?? '-',
+                                              style: const TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text(
+                                          item.subtitle ?? '-',
+                                          style: const TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               height: 84,
-              child: Placeholder(),
+              child: Row(
+                children: [
+
+                ],
+              ),
             ),
             SizedBox(
               height: 16,
